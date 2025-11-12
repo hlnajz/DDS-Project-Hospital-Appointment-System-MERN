@@ -12,7 +12,7 @@ exports.subscribeAssurance = async (req, res) => {
 
     // Call the RPC endpoint to get AI suggested plan
     const { data } = await axios.post(
-      process.env.RPC_URL || "http://localhost:8000/rpc/assurance",
+      process.env.RPC_URL || "https://dds-project-hospital-appointment-system-wj9d.onrender.com/rpc/assurance",
       {
         age: user.age,
         gender: user.gender,
