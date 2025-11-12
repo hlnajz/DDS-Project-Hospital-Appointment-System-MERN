@@ -5,7 +5,7 @@ const router = express.Router();
 // Forward directly to Python
 router.post("/assurance", async (req, res) => {
   try {
-    const response = await axios.post("http://localhost:8000/rpc/assurance", req.body);
+    const response = await axios.post("https://dds-project-hospital-appointment-system-wj9d.onrender.com/rpc/assurance", req.body);
     res.json(response.data);
   } catch (error) {
     console.error("RPC error:", error.message);
