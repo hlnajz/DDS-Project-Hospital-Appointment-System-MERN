@@ -10,7 +10,7 @@ router.post("/subscribe", subscribeAssurance);
 router.post("/assurance", async (req, res) => {
   try {
     const response = await axios.post(
-      process.env.RPC_URL || "http://localhost:8000/rpc/assurance",
+      process.env.RPC_URL || "https://dds-project-hospital-appointment-system-wj9d.onrender.com/rpc/assurance",
       req.body
     );
     res.json(response.data);
