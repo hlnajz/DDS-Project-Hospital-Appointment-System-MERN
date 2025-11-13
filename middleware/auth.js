@@ -2,16 +2,20 @@ const jwt = require("jsonwebtoken");
 
 const auth = (req, res, next) => {
   try {
-    const token = req.headers.authorization.split(" ")[1];
-    const verifyToken = jwt.verify(token, process.env.JWT_SECRET);
-    if (!verifyToken) {
-      return res.status(401).send("Token error");
-    }
-    req.locals = verifyToken.userId;
+    const authHeader = req.headers.authorization;
+    if (!authHeader) return res.status(401).send("No token provided");
+
+    const token = authHeader.split(" ")[1];
+    if (!token) return res.status(401).send("Malformed token");
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.userId = decoded.userId;      // match controller
+    req.isAdmin = decoded.isAdmin;    // optional, if needed
+
     next();
   } catch (error) {
-    console.log(error);
-    return error;
+    console.error("Auth middleware error:", error.message);
+    return res.status(401).send("Unauthorized");
   }
 };
 
