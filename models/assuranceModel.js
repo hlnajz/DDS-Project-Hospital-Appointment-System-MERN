@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+// this model is for RPC
 const assuranceSchema = new mongoose.Schema(
   {
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },

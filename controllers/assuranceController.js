@@ -10,7 +10,7 @@ exports.subscribeAssurance = async (req, res) => {
     const user = await User.findById(userId);
     if (!user) return res.status(404).json({ message: "User not found" });
 
-    // Call the RPC endpoint to get AI suggested plan
+    // Call the RPC endpoint to get AI  plans
     const { data } = await axios.post(
       process.env.RPC_URL || "https://dds-project-hospital-appointment-system-wj9d.onrender.com/rpc/assurance",
       {

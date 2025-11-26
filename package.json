@@ -1,7 +1,7 @@
 {
   "name": "UIZ Hospital",
   "version": "2.0.0",
-  "description": "Doctor appointment website",
+  "description": "UIZ Hospital is Online web Hospital in Agadir but for education only",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

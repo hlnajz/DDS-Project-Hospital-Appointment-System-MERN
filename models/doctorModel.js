@@ -32,3 +32,4 @@ const schema = mongoose.Schema(
 const Doctor = mongoose.model("Doctor", schema);
 
 module.exports = Doctor;
+

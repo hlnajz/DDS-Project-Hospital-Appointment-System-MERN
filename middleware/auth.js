@@ -9,8 +9,8 @@ const auth = (req, res, next) => {
     if (!token) return res.status(401).send("Malformed token");
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.userId = decoded.userId;      // match controller
-    req.isAdmin = decoded.isAdmin;    // optional, if needed
+    req.userId = decoded.userId;     
+    req.isAdmin = decoded.isAdmin;    
 
     next();
   } catch (error) {

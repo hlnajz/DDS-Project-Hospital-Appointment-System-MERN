@@ -35,11 +35,7 @@ app.use("/api/appointment", appointRouter);
 app.use("/api/notification", notificationRouter);
 app.use("/api/rpc", assuranceRoutes);
 
-// optional: React build serving
-// app.use(express.static(path.join(__dirname, "./client/build")));
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-// });
+
 
 
 

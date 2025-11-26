@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 require("dotenv").config();
 
+// connect to DB
 const client = mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
