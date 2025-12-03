@@ -6,12 +6,12 @@ const Appointment = require("../models/appointmentModel");
 const getalldoctors = async (req, res) => {
   try {
     let docs;
-    if (!req.locals) {
+    if (!req.userId) {
       docs = await Doctor.find({ isDoctor: true }).populate("userId");
     } else {
       docs = await Doctor.find({ isDoctor: true })
         .find({
-          _id: { $ne: req.locals },
+          _id: { $ne: req.userId },
         })
         .populate("userId");
     }
@@ -26,7 +26,7 @@ const getnotdoctors = async (req, res) => {
   try {
     const docs = await Doctor.find({ isDoctor: false })
       .find({
-        _id: { $ne: req.locals },
+        _id: { $ne: req.userId },
       })
       .populate("userId");
 
@@ -38,12 +38,12 @@ const getnotdoctors = async (req, res) => {
 
 const applyfordoctor = async (req, res) => {
   try {
-    const alreadyFound = await Doctor.findOne({ userId: req.locals });
+    const alreadyFound = await Doctor.findOne({ userId: req.userId });
     if (alreadyFound) {
       return res.status(400).send("Application already exists");
     }
 
-    const doctor = Doctor({ ...req.body.formDetails, userId: req.locals });
+    const doctor = Doctor({ ...req.body.formDetails, userId: req.userId });
     const result = await doctor.save();
 
     return res.status(201).send("Application submitted successfully");

@@ -16,7 +16,7 @@ const getuser = async (req, res) => {
 const getallusers = async (req, res) => {
   try {
     const users = await User.find()
-      .find({ _id: { $ne: req.locals } })
+      .find({ _id: { $ne: req.userId } })
       .select("-password");
     return res.send(users);
   } catch (error) {
