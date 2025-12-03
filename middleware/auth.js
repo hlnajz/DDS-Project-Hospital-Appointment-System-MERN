@@ -9,12 +9,19 @@ const auth = (req, res, next) => {
     if (!token) return res.status(401).send("Malformed token");
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.userId = decoded.userId;     
-    req.isAdmin = decoded.isAdmin;    
+
+    // Handle all token formats
+    req.userId =
+      decoded.userId ||
+      decoded._id ||
+      decoded.id;    // auto-detect correct key
+
+    if (!req.userId) return res.status(401).send("Invalid token payload");
+
+    req.isAdmin = decoded.isAdmin || false;
 
     next();
   } catch (error) {
-    console.error("Auth middleware error:", error.message);
     return res.status(401).send("Unauthorized");
   }
 };
