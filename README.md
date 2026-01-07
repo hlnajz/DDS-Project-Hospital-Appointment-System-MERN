@@ -2,7 +2,7 @@
 
 ![UIZ Hospital Backend](https://img.shields.io/badge/UIZ_Hospital-Backend_API-2e7d32?style=for-the-badge&logo=serverless&logoColor=white)
 
-# UIZ Hospital - API Gateway & Backend 🏥
+# UIZ Hospital - API Gateway & Backend 🏥 
 
 ### Distributed Systems Module Project
 
